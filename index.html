@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Portfólio e página pessoal — Data & Analytics" />
+  <title>Kaio Peixoto — Data & Analytics</title>
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --fg:#111827;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --card:#ffffff;
+      --soft:#f9fafb;
+      --accent:#0f172a;
+      --btn:#111827;
+      --btnText:#ffffff;
+      --shadow: 0 10px 30px rgba(17,24,39,.08);
+      --radius: 16px;
+      --max: 1040px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--fg);
+      background:linear-gradient(180deg, var(--soft), var(--bg) 420px);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .topbar{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:saturate(180%) blur(10px);
+      background:rgba(255,255,255,.75);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar .wrap{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:14px 24px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; text-decoration:none;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:99px; background:var(--accent);
+      box-shadow:0 0 0 4px rgba(15,23,42,.08);
+    }
+    .brand strong{font-size:14px; letter-spacing:.2px}
+    .nav{
+      display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .nav a{
+      text-decoration:none; padding:8px 10px; border-radius:10px;
+    }
+    .nav a:hover{background:rgba(17,24,39,.06); color:var(--fg)}
+    .lang{
+      display:flex; gap:8px; align-items:center;
+      border:1px solid var(--line); background:var(--bg);
+      padding:6px; border-radius:999px;
+      box-shadow:0 2px 10px rgba(17,24,39,.04);
+    }
+    .lang button{
+      border:0; background:transparent; padding:7px 10px;
+      border-radius:999px; cursor:pointer;
+      font-weight:600; font-size:13px; color:var(--muted);
+    }
+    .lang button.active{background:var(--btn); color:var(--btnText)}
+    header.hero{
+      padding:44px 0 24px;
+    }
+    .heroGrid{
+      display:grid; grid-template-columns: 1.2fr .8fr;
+      gap:22px; align-items:stretch;
+    }
+    .heroCard{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:26px;
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap:8px;
+      color:var(--muted); font-size:13px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.7);
+      padding:7px 10px; border-radius:999px;
+    }
+    h1{margin:14px 0 10px; font-size:34px; line-height:1.15; letter-spacing:-.6px}
+    .subtitle{margin:0; color:var(--muted); font-size:16px; max-width:60ch}
+    .ctaRow{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:18px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      border-radius:12px;
+      padding:10px 14px;
+      text-decoration:none;
+      border:1px solid var(--line);
+      background:var(--bg);
+      color:var(--fg);
+      font-weight:700; font-size:14px;
+    }
+    .btn.primary{
+      background:var(--btn);
+      color:var(--btnText);
+      border-color:var(--btn);
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn:active{transform:translateY(0px)}
+    .mini{
+      margin-top:18px; display:flex; gap:14px; flex-wrap:wrap;
+      color:var(--muted); font-size:13px;
+    }
+    .mini span{display:inline-flex; gap:8px; align-items:center}
+    .mini .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      border:1px solid var(--line); background:rgba(255,255,255,.65);
+      padding:6px 10px; border-radius:999px;
+    }
+
+    .sideCard{
+      display:flex; flex-direction:column; gap:14px;
+    }
+    .sideBlock{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 8px 20px rgba(17,24,39,.06);
+    }
+    .sideBlock h3{margin:0 0 8px; font-size:14px}
+    .sideBlock p{margin:0; color:var(--muted); font-size:14px}
+    .tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
+    .tag{
+      font-size:12px; color:var(--muted);
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.7);
+      padding:6px 10px; border-radius:999px;
+    }
+
+    section{padding:18px 0}
+    .sectionHead{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:16px; flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .sectionHead h2{margin:0; font-size:18px; letter-spacing:-.2px}
+    .sectionHead p{margin:0; color:var(--muted); max-width:70ch}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+      margin-top:14px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 10px 24px rgba(17,24,39,.05);
+      min-height: 160px;
+    }
+    .card h3{margin:0 0 8px; font-size:15px}
+    .card p{margin:0; color:var(--muted); font-size:14px}
+    .card .meta{
+      margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;
+    }
+    .card .meta span{
+      font-size:12px; color:var(--muted);
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.7);
+      padding:6px 10px; border-radius:999px;
+    }
+    .card .links{
+      margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .card .links a{
+      font-size:13px; font-weight:700;
+      text-decoration:none;
+      border-bottom:1px solid rgba(17,24,39,.2);
+      padding-bottom:2px;
+    }
+    .card .links a:hover{border-bottom-color: rgba(17,24,39,.6)}
+
+    footer{
+      padding:26px 0 40px;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+      margin-top:26px;
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .heroGrid{grid-template-columns: 1fr}
+      .grid{grid-template-columns: 1fr}
+      h1{font-size:30px}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="wrap">
+      <a class="brand" href="#top">
+        <span class="dot" aria-hidden="true"></span>
+        <strong>Kaio Peixoto</strong>
+      </a>
+
+      <nav class="nav" aria-label="primary">
+        <a href="#about" data-i18n="nav_about">Sobre</a>
+        <a href="#projects" data-i18n="nav_projects">Projetos</a>
+        <a href="#skills" data-i18n="nav_skills">Atuação</a>
+        <a href="#contact" data-i18n="nav_contact">Contato</a>
+      </nav>
+
+      <div class="lang" aria-label="language toggle">
+        <button id="btnPT" class="active" type="button">PT</button>
+        <button id="btnEN" type="button">EN</button>
+      </div>
+    </div>
+  </div>
+
+  <main id="top" class="wrap">
+    <!-- Hero -->
+    <header class="hero">
+      <div class="heroGrid">
+        <div class="heroCard">
+          <div class="kicker" data-i18n="kicker">
+            Data • Analytics • Automation
+          </div>
+
+          <h1 data-i18n="title">
+            Eu construo soluções de dados que viram decisão (e reduzem retrabalho).
+          </h1>
+
+          <p class="subtitle" data-i18n="subtitle">
+            Senior Data Analyst com foco em People Analytics, automação de ETL, qualidade de dados e dashboards. Experiência em transformar processos manuais em pipelines auditáveis e escaláveis.
+          </p>
+
+          <div class="ctaRow">
+            <a class="btn primary" href="#projects" data-i18n="cta_projects">Ver projetos</a>
+            <a class="btn" href="#contact" data-i18n="cta_contact">Falar comigo</a>
+
+            <!-- Opcional: coloque seus PDFs no repo com esses nomes -->
+            <a class="btn" href="cv_pt.pdf" target="_blank" rel="noopener" data-i18n="cta_cv">
+              Baixar CV
+            </a>
+          </div>
+
+          <div class="mini">
+            <span class="pill">📍 <span data-i18n="loc">São Paulo, BR</span></span>
+            <span class="pill">💼 <span data-i18n="role">Data & People Analytics</span></span>
+            <span class="pill">⚙️ <span data-i18n="stack">Python • SQL • Power BI • DuckDB</span></span>
+          </div>
+        </div>
+
+        <div class="sideCard">
+          <div class="sideBlock">
+            <h3 data-i18n="now_title">Agora</h3>
+            <p data-i18n="now_text">
+              Construindo pipelines de dados com validação, logs confiáveis e camadas em Parquet/DuckDB para acelerar análises e melhorar governança.
+            </p>
+            <div class="tags">
+              <span class="tag">ETL</span>
+              <span class="tag">Data Quality</span>
+              <span class="tag">Governance</span>
+              <span class="tag">Dashboards</span>
+            </div>
+          </div>
+
+          <div class="sideBlock">
+            <h3 data-i18n="links_title">Links</h3>
+            <p>
+              <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+              <span aria-hidden="true"> · </span>
+              <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+              <span aria-hidden="true"> · </span>
+              <a href="mailto:seuemail@exemplo.com">Email</a>
+            </p>
+            <p style="margin-top:10px" data-i18n="links_hint">
+              Troque os links acima pelos seus reais.
+            </p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- About -->
+    <section id="about">
+      <div class="sectionHead">
+        <div>
+          <h2 data-i18n="about_title">Sobre</h2>
+          <p data-i18n="about_text">
+            Eu gosto de construir “linha de produção” de dados: entrada padronizada, tratamento consistente, logs e validações — para que o time confie no número e ganhe velocidade. Trabalho bem na interseção entre negócio e engenharia (explico para leigos e implemento com rigor técnico).
+          </p>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns: repeat(3,1fr);">
+        <div class="card">
+          <h3 data-i18n="about_card1_title">Como eu trabalho</h3>
+          <p data-i18n="about_card1_text">
+            Começo pelo problema e pela métrica. Depois desenho o pipeline com rastreabilidade, testes e “failure modes” claros.
+          </p>
+          <div class="meta">
+            <span>Problem → System</span><span>Observability</span><span>Pragmatism</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="about_card2_title">O que eu entrego</h3>
+          <p data-i18n="about_card2_text">
+            ETLs robustos, camadas em Parquet/DuckDB, modelos de dados e dashboards que encurtam o caminho entre dado e decisão.
+          </p>
+          <div class="meta">
+            <span>ETL</span><span>Modeling</span><span>BI</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="about_card3_title">Onde eu gosto de atuar</h3>
+          <p data-i18n="about_card3_text">
+            Times data-driven com espaço para melhorar padrões, automatizar rotinas e elevar maturidade analítica.
+          </p>
+          <div class="meta">
+            <span>Quality</span><span>Automation</span><span>Enablement</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="sectionHead">
+        <div>
+          <h2 data-i18n="projects_title">Projetos em destaque</h2>
+          <p data-i18n="projects_text">
+            Poucos projetos, bem contados. Aqui eu mostro o problema, a solução e o impacto.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3 data-i18n="p1_title">Framework de ETL com controle, logs e validações</h3>
+          <p data-i18n="p1_text">
+            Orquestração de steps (Python e integrações), observabilidade e tratamento de erros — reduzindo reprocessos e aumentando confiabilidade.
+          </p>
+          <div class="meta">
+            <span>Python</span><span>Logging</span><span>Parquet</span><span>Streamlit</span>
+          </div>
+          <div class="links">
+            <a href="#" data-i18n="p_link_repo">Repositório</a>
+            <a href="#" data-i18n="p_link_case">Case/Write-up</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="p2_title">Camada analítica em DuckDB + Parquet</h3>
+          <p data-i18n="p2_text">
+            Padronização de dados, schemas consistentes e consultas rápidas local/cloud-friendly para análises recorrentes.
+          </p>
+          <div class="meta">
+            <span>DuckDB</span><span>SQL</span><span>Data Quality</span><span>Governance</span>
+          </div>
+          <div class="links">
+            <a href="#" data-i18n="p_link_repo">Repositório</a>
+            <a href="#" data-i18n="p_link_case">Case/Write-up</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="p3_title">Mapa temporal: evolução da COVID-19 na Bahia</h3>
+          <p data-i18n="p3_text">
+            Visualização geográfica para contar a história da evolução de casos ao longo do tempo.
+          </p>
+          <div class="meta">
+            <span>Folium</span><span>Pandas</span><span>Geo</span><span>Data Storytelling</span>
+          </div>
+          <div class="links">
+            <a href="#" data-i18n="p_link_live">Ver online</a>
+            <a href="#" data-i18n="p_link_repo">Repositório</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills / What I Do -->
+    <section id="skills">
+      <div class="sectionHead">
+        <div>
+          <h2 data-i18n="skills_title">Atuação</h2>
+          <p data-i18n="skills_text">
+            Áreas onde eu tenho mais tração e onde consigo gerar impacto rápido.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3 data-i18n="s1_title">People Analytics</h3>
+          <p data-i18n="s1_text">
+            Métricas e narrativas para RH/Finanças: headcount, remuneração, indicadores e insights acionáveis.
+          </p>
+          <div class="meta"><span>HR Metrics</span><span>Storytelling</span><span>Power BI</span></div>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="s2_title">Data Engineering “na prática”</h3>
+          <p data-i18n="s2_text">
+            ETL, padronização, schemas, performance e governança com foco em reduzir atrito no dia a dia.
+          </p>
+          <div class="meta"><span>ETL</span><span>Parquet</span><span>SQL</span></div>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="s3_title">Automação e confiabilidade</h3>
+          <p data-i18n="s3_text">
+            Logs, validações, alertas e padrões que tornam o pipeline observável e sustentável.
+          </p>
+          <div class="meta"><span>Logging</span><span>Validation</span><span>Observability</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="sectionHead">
+        <div>
+          <h2 data-i18n="contact_title">Contato</h2>
+          <p data-i18n="contact_text">
+            Quer conversar sobre dados, automação ou projetos? Me chama.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="card">
+          <h3>Email</h3>
+          <p><a href="mailto:seuemail@exemplo.com">seuemail@exemplo.com</a></p>
+          <div class="meta"><span data-i18n="contact_hint1">Resposta rápida</span></div>
+        </div>
+
+        <div class="card">
+          <h3>LinkedIn</h3>
+          <p><a href="https://www.linkedin.com/" target="_blank" rel="noopener">linkedin.com/in/seu-perfil</a></p>
+          <div class="meta"><span data-i18n="contact_hint2">Vamos conectar</span></div>
+        </div>
+
+        <div class="card">
+          <h3>GitHub</h3>
+          <p><a href="https://github.com/" target="_blank" rel="noopener">github.com/seu-usuario</a></p>
+          <div class="meta"><span data-i18n="contact_hint3">Código e demos</span></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+        <span>© <span id="year"></span> Kaio Peixoto</span>
+        <span data-i18n="footer_note">Hospedado no GitHub Pages • Página estática</span>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // ---------- i18n content ----------
+    const I18N = {
+      pt: {
+        nav_about: "Sobre",
+        nav_projects: "Projetos",
+        nav_skills: "Atuação",
+        nav_contact: "Contato",
+
+        kicker: "Data • Analytics • Automation",
+        title: "Eu construo soluções de dados que viram decisão (e reduzem retrabalho).",
+        subtitle: "Senior Data Analyst com foco em People Analytics, automação de ETL, qualidade de dados e dashboards. Experiência em transformar processos manuais em pipelines auditáveis e escaláveis.",
+
+        cta_projects: "Ver projetos",
+        cta_contact: "Falar comigo",
+        cta_cv: "Baixar CV",
+
+        loc: "São Paulo, BR",
+        role: "Data & People Analytics",
+        stack: "Python • SQL • Power BI • DuckDB",
+
+        now_title: "Agora",
+        now_text: "Construindo pipelines de dados com validação, logs confiáveis e camadas em Parquet/DuckDB para acelerar análises e melhorar governança.",
+
+        links_title: "Links",
+        links_hint: "Troque os links acima pelos seus reais.",
+
+        about_title: "Sobre",
+        about_text: "Eu gosto de construir “linha de produção” de dados: entrada padronizada, tratamento consistente, logs e validações — para que o time confie no número e ganhe velocidade. Trabalho bem na interseção entre negócio e engenharia (explico para leigos e implemento com rigor técnico).",
+
+        about_card1_title: "Como eu trabalho",
+        about_card1_text: "Começo pelo problema e pela métrica. Depois desenho o pipeline com rastreabilidade, testes e “failure modes” claros.",
+        about_card2_title: "O que eu entrego",
+        about_card2_text: "ETLs robustos, camadas em Parquet/DuckDB, modelos de dados e dashboards que encurtam o caminho entre dado e decisão.",
+        about_card3_title: "Onde eu gosto de atuar",
+        about_card3_text: "Times data-driven com espaço para melhorar padrões, automatizar rotinas e elevar maturidade analítica.",
+
+        projects_title: "Projetos em destaque",
+        projects_text: "Poucos projetos, bem contados. Aqui eu mostro o problema, a solução e o impacto.",
+
+        p1_title: "Framework de ETL com controle, logs e validações",
+        p1_text: "Orquestração de steps (Python e integrações), observabilidade e tratamento de erros — reduzindo reprocessos e aumentando confiabilidade.",
+
+        p2_title: "Camada analítica em DuckDB + Parquet",
+        p2_text: "Padronização de dados, schemas consistentes e consultas rápidas local/cloud-friendly para análises recorrentes.",
+
+        p3_title: "Mapa temporal: evolução da COVID-19 na Bahia",
+        p3_text: "Visualização geográfica para contar a história da evolução de casos ao longo do tempo.",
+
+        p_link_repo: "Repositório",
+        p_link_case: "Case/Write-up",
+        p_link_live: "Ver online",
+
+        skills_title: "Atuação",
+        skills_text: "Áreas onde eu tenho mais tração e onde consigo gerar impacto rápido.",
+
+        s1_title: "People Analytics",
+        s1_text: "Métricas e narrativas para RH/Finanças: headcount, remuneração, indicadores e insights acionáveis.",
+        s2_title: "Data Engineering “na prática”",
+        s2_text: "ETL, padronização, schemas, performance e governança com foco em reduzir atrito no dia a dia.",
+        s3_title: "Automação e confiabilidade",
+        s3_text: "Logs, validações, alertas e padrões que tornam o pipeline observável e sustentável.",
+
+        contact_title: "Contato",
+        contact_text: "Quer conversar sobre dados, automação ou projetos? Me chama.",
+        contact_hint1: "Resposta rápida",
+        contact_hint2: "Vamos conectar",
+        contact_hint3: "Código e demos",
+
+        footer_note: "Hospedado no GitHub Pages • Página estática"
+      },
+
+      en: {
+        nav_about: "About",
+        nav_projects: "Projects",
+        nav_skills: "Focus",
+        nav_contact: "Contact",
+
+        kicker: "Data • Analytics • Automation",
+        title: "I build data systems that turn into decisions (and reduce rework).",
+        subtitle: "Senior Data Analyst focused on People Analytics, ETL automation, data quality, and dashboards—turning manual processes into auditable, scalable pipelines.",
+
+        cta_projects: "View projects",
+        cta_contact: "Contact me",
+        cta_cv: "Download CV",
+
+        loc: "São Paulo, BR",
+        role: "Data & People Analytics",
+        stack: "Python • SQL • Power BI • DuckDB",
+
+        now_title: "Now",
+        now_text: "Building data pipelines with validation, reliable logs, and Parquet/DuckDB layers to speed up analytics and improve governance.",
+
+        links_title: "Links",
+        links_hint: "Replace the links above with your real ones.",
+
+        about_title: "About",
+        about_text: "I like building a data “production line”: standardized inputs, consistent transformations, logs, and validations—so teams trust the numbers and move faster. I work at the intersection of business and engineering (clear for non-technical audiences, rigorous in implementation).",
+
+        about_card1_title: "How I work",
+        about_card1_text: "Start with the problem and the metric. Then design the pipeline with traceability, tests, and clear failure modes.",
+        about_card2_title: "What I deliver",
+        about_card2_text: "Robust ETLs, Parquet/DuckDB layers, data models, and dashboards that shorten the path from data to decision.",
+        about_card3_title: "Where I add value",
+        about_card3_text: "Data-driven teams looking to raise standards, automate routines, and improve analytical maturity.",
+
+        projects_title: "Featured projects",
+        projects_text: "A small set of projects, well explained: problem, solution, and impact.",
+
+        p1_title: "ETL framework with orchestration, logs & validations",
+        p1_text: "Step orchestration (Python and integrations), observability, and error handling—reducing reprocessing and improving reliability.",
+
+        p2_title: "Analytics layer with DuckDB + Parquet",
+        p2_text: "Standardized data, consistent schemas, and fast local/cloud-friendly queries for recurring analytics.",
+
+        p3_title: "Time map: COVID-19 spread in Bahia (Brazil)",
+        p3_text: "Geospatial visualization to tell the story of case growth over time.",
+
+        p_link_repo: "Repository",
+        p_link_case: "Case/Write-up",
+        p_link_live: "Live demo",
+
+        skills_title: "Focus",
+        skills_text: "Where I create the most leverage and deliver impact quickly.",
+
+        s1_title: "People Analytics",
+        s1_text: "Business-ready metrics and narratives for HR/Finance: headcount, compensation, indicators, and actionable insights.",
+        s2_title: "Practical Data Engineering",
+        s2_text: "ETL, standardization, schemas, performance, and governance—built to reduce day-to-day friction.",
+        s3_title: "Automation & reliability",
+        s3_text: "Logs, validations, alerts, and patterns that make pipelines observable and sustainable.",
+
+        contact_title: "Contact",
+        contact_text: "Want to chat about data, automation, or projects? Reach out.",
+        contact_hint1: "Fast reply",
+        contact_hint2: "Let’s connect",
+        contact_hint3: "Code & demos",
+
+        footer_note: "Hosted on GitHub Pages • Static site"
+      }
+    };
+
+    // ---------- helpers ----------
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+    function applyLang(lang){
+      $$("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (I18N[lang] && I18N[lang][key]) el.textContent = I18N[lang][key];
+      });
+
+      // CV link: optional – switch target file if you use two PDFs
+      const cvBtn = document.querySelector('a[href="cv_pt.pdf"], a[href="cv_en.pdf"], a[data-i18n="cta_cv"]');
+      if (cvBtn) {
+        cvBtn.setAttribute("href", lang === "en" ? "cv_en.pdf" : "cv_pt.pdf");
+      }
+
+      $("#btnPT").classList.toggle("active", lang === "pt");
+      $("#btnEN").classList.toggle("active", lang === "en");
+
+      document.documentElement.lang = (lang === "en") ? "en" : "pt-br";
+      localStorage.setItem("lang", lang);
+    }
+
+    // ---------- init ----------
+    $("#year").textContent = new Date().getFullYear();
+
+    $("#btnPT").addEventListener("click", () => applyLang("pt"));
+    $("#btnEN").addEventListener("click", () => applyLang("en"));
+
+    const saved = localStorage.getItem("lang");
+    applyLang(saved === "en" ? "en" : "pt");
+  </script>
+</body>
+</html>
